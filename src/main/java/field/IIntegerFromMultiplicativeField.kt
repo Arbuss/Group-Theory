@@ -1,7 +1,9 @@
 package field
 
 interface IIntegerFromMultiplicativeField {
-    val zero: Int
+    companion object {
+        val ZERO = 0
+    }
     var number: Int
     val canIncrement: Boolean
     val edge: Int

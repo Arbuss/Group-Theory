@@ -9,6 +9,10 @@ typealias MatrixType = IMatrix<IIntegerFromMultiplicativeField>
 class GroupUtil {
     companion object {
         fun getGroup(matrixSize: Int, fieldEdge: Int): List<MatrixType> {
+            return getAllMatrix(matrixSize, fieldEdge).filter { it.determinant!!.number != IIntegerFromMultiplicativeField.ZERO }
+        }
+
+        private fun getAllMatrix(matrixSize: Int, fieldEdge: Int): List<MatrixType> {
             val result = ArrayList<MatrixType>()
             var currentMatrix = MatrixOverMultiplicativeField(matrixSize, fieldEdge)
             result.add(currentMatrix)
@@ -25,14 +29,6 @@ class GroupUtil {
             val next = prev.copy()
             next.increment()
             return next
-        }
-
-        fun printMatrix(matrix: MatrixType) {
-            matrix.data.forEach {
-                print(it.number)
-            }
-            print(" = ${matrix.determinant!!.number}")
-            println()
         }
     }
 }

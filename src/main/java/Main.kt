@@ -1,7 +1,8 @@
-import matrix.MatrixOverMultiplicativeField
+import field.IIntegerFromMultiplicativeField
 import utils.conjugacy.ConjugacyUtil
 import utils.group.GroupUtil
 import utils.group.MatrixType
+import utils.matrix.MatrixUtil
 
 fun easyGroupTest(matrixSize: Int, fieldEdge: Int) {
     val easyGroup = GroupUtil.getGroup(matrixSize, fieldEdge)
@@ -9,7 +10,7 @@ fun easyGroupTest(matrixSize: Int, fieldEdge: Int) {
     var counter = 1
     easyGroup.forEach {
         print("${counter++}. ")
-        GroupUtil.printMatrix(it)
+        MatrixUtil.printMatrix(it)
     }
     print(easyGroup.size)
 }
@@ -47,7 +48,7 @@ fun getGroupSize(matrixSize: Int, fieldEdge: Int): Int {
 
     easyGroup.forEach {
         val det = it.determinant!!
-        if (det.number != det.zero) {
+        if (det.number != IIntegerFromMultiplicativeField.ZERO) {
             groupWithNonNullDeterminants.add(it)
         } else {
             groupWithNullDeterminants.add(it)
@@ -61,7 +62,7 @@ fun getGroupSize(matrixSize: Int, fieldEdge: Int): Int {
 //    }
 
     groupWithNullDeterminants.forEach {
-        GroupUtil.printMatrix(it)
+        MatrixUtil.printMatrix(it)
     }
 
     return groupWithNonNullDeterminants.size

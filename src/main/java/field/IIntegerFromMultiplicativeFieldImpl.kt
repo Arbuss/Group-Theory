@@ -1,8 +1,6 @@
 package field
 
 open class IIntegerFromMultiplicativeFieldImpl(override val edge: Int, initNumber: Int) : IIntegerFromMultiplicativeField {
-    override val zero = 0
-
     override var number: Int = initNumber % edge
         set(value) {
             field = value % edge
@@ -57,15 +55,15 @@ open class IIntegerFromMultiplicativeFieldImpl(override val edge: Int, initNumbe
     }
 
     override fun div(other: IIntegerFromMultiplicativeField): IIntegerFromMultiplicativeField {
-        val result = IIntegerFromMultiplicativeFieldImpl(edge, 1)
+        val result = IIntegerFromMultiplicativeFieldImpl(edge, 0)
 
-        while(result.canIncrement) {
-            if(this == other * result) {
+        for(i in 0 until edge) {
+            if (this == other * result) {
                 return result
-            } else {
-                result.increment()
             }
+            result.increment()
         }
+
         throw Exception("не нашлось частного")
     }
 
