@@ -6,8 +6,9 @@ interface IMatrix<T> {
     val size: Int
     val data: Array<T>
     val canIncrement: Boolean
+    var determinant: IIntegerFromMultiplicativeField?
 
-    fun set(row: Int, col: Int, element: T) {
+    operator fun set(row: Int, col: Int, element: T) {
         data[row * size + col] = element
     }
 
@@ -16,4 +17,8 @@ interface IMatrix<T> {
     fun increment()
 
     fun copy(): IMatrix<T>
+
+    fun getInvertible(): IMatrix<T>
+
+    operator fun times(other: IMatrix<T>): IMatrix<T>
 }
