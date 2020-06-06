@@ -37,7 +37,7 @@ class MatrixOverMultiplicativeField(override val size: Int, edgeField: Int) : IM
     override fun getInvertible(): IMatrix<IIntegerFromMultiplicativeField> {
         val result = MatrixOverMultiplicativeField(size, data[0].edge)
 
-        result.data[0] = data[4] / determinant!!
+        result.data[0] = data[3] / determinant!!
         result.data[1] = -data[2] / determinant!!
         result.data[2] = -data[3] / determinant!!
         result.data[3] = data[1] / determinant!!
