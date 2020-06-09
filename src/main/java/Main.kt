@@ -94,6 +94,8 @@ fun testFormula() {
 fun formula(p: Int) = (p * p - 1) * (p * p - p)
 
 fun main() {
+    val matrixSize = 2
+    val fieldEdge = 3
 //    easyGroupTest(2, 2)
 //    shitIncrementMatrixTest()
 //    lastMatrixIncrementFix()
@@ -101,5 +103,5 @@ fun main() {
 //    coefficientsSelection()
 //    testFormula()
 //    getGroupSize(2, 3)
-    ConjugacyUtil.getConjugacyClasses(GroupUtil.getGroup(2, 2))
+    ConjugacyUtil.getConjugacyClasses(GroupUtil.getGroup(matrixSize, fieldEdge))
 }
